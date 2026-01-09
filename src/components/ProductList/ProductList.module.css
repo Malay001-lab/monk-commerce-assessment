@@ -1,0 +1,230 @@
+.listContainer {
+  width: 100%;
+  max-width: 800px;
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 var(--spacing-md) var(--spacing-sm);
+  color: #637381;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.headerRight {
+  width: 320px;
+  padding-right: 48px;
+  text-align: right;
+  padding-left: 10px;
+}
+
+.productRowWrapper {
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: var(--spacing-md);
+}
+
+.productRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  height: 48px;
+}
+
+.dragHandle {
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  color: #94a3b8;
+  transition: color 0.2s;
+}
+
+.dragHandle:hover {
+  color: var(--text-main);
+}
+
+.dragHandle:active {
+  cursor: grabbing;
+}
+
+.index {
+  width: 24px;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.productInfo {
+  flex: 1;
+}
+
+.inputGroup {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 8px 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.inputGroup:focus-within {
+  border-color: #008060;
+  box-shadow: 0 0 0 1px #008060;
+}
+
+.inputTitle {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 14px;
+  color: var(--text-main);
+  background: transparent;
+  width: 100%;
+  text-overflow: ellipsis;
+}
+
+.productImage {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-right: 8px;
+  border: 1px solid #eee;
+}
+
+.editBtn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  padding: 4px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.editBtn:hover {
+  color: #008060;
+}
+
+.discountSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 320px;
+  justify-content: flex-end;
+}
+
+.discountInputs {
+  display: flex;
+  gap: 8px;
+}
+
+.discountVal {
+  width: 80px;
+  padding: 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  text-align: right;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.discountVal:focus {
+  border-color: #008060;
+}
+
+.discountType {
+  width: 80px;
+  padding: 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  background: white;
+  outline: none;
+  cursor: pointer;
+}
+
+.discountType:focus {
+  border-color: #008060;
+}
+
+.btnAddDiscount {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btnAddDiscount:hover {
+  background: var(--primary-hover);
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  padding: 8px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.removeBtn:hover {
+  color: #ef4444;
+}
+
+.variantToggle {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.linkBtn {
+  background: none;
+  border: none;
+  color: #006aff;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.linkBtn:hover {
+  text-decoration: underline;
+}
+
+.variantsList {
+  margin-top: 16px;
+  padding-left: 56px;
+}
+
+.variantRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: 12px;
+}
+
+.variantInfo {
+  flex: 1;
+}
+
+.pill {
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  display: inline-block;
+  min-width: 100px;
+}

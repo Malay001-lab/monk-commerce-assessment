@@ -1,0 +1,244 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px); /* Glass effect */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal {
+  background: white;
+  width: 660px;
+  height: 80vh;
+  border-radius: 8px; /* Slightly softer radius */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--text-main);
+  background: #f9fafb;
+}
+
+.header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #64748b;
+  transition: color 0.2s;
+  padding: 4px;
+}
+
+.header button:hover {
+  color: var(--text-main);
+}
+
+.searchBar {
+  padding: 16px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: white;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 36px;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.searchBar input {
+  width: 100%;
+  padding: 10px 10px 10px 40px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.searchBar input:focus {
+  border-color: #008060;
+  box-shadow: 0 0 0 2px rgba(0, 128, 96, 0.1);
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.item {
+  border-bottom: 1px solid #f1f5f9;
+  padding: 12px 24px;
+  transition: background 0.15s;
+}
+
+.item:hover {
+  background: #f8fafc;
+}
+
+.itemHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.thumb {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.itemHeader input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #008060;
+  cursor: pointer;
+}
+
+.itemHeader span {
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--text-main);
+}
+
+.variants {
+  padding-left: 78px; /* Checkbox(18) + Gap(16) + Thumb(44) + Gap(16) = ~94px actually, tweaking */
+}
+
+.variantItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #475569;
+}
+
+.flexRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.flexRow input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #008060;
+  cursor: pointer;
+}
+
+.price {
+  font-family: monospace; /* optional */
+  color: #0f172a;
+}
+
+.footer {
+  padding: 16px 24px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9fafb;
+}
+
+.count {
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btnCancel {
+  padding: 8px 16px;
+  background: white;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btnCancel:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.btnAdd {
+  padding: 8px 24px;
+  background: #008060; /* Monk Green/Shopify Green */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+}
+
+.btnAdd:hover {
+  background: #006e52;
+  transform: translateY(-1px);
+}
+
+.error {
+  text-align: center;
+  padding: 20px;
+  color: var(--error);
+  font-weight: 500;
+}
+
+.loading,
+.empty {
+  text-align: center;
+  padding: 40px;
+  color: #94a3b8;
+  font-style: italic;
+}
