@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { GripVertical } from "lucide-react";
+import { GripVertical, Edit2, X, ChevronDown, ChevronUp } from "lucide-react";
 import {
   SortableContext,
   verticalListSortingStrategy,
