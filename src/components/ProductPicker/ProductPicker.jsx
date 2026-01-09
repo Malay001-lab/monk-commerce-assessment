@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { X, Search } from "lucide-react";
 import styles from "./ProductPicker.module.css";
 import { productsApi } from "../../services/apiClient";
 import useInfiniteScroll from "../../hooks/useInfiniteScroll";
-import classNames from "classnames";
 
 export default function ProductPicker({ isOpen, onClose, onSelect }) {
   const [query, setQuery] = useState("");
@@ -11,9 +10,8 @@ export default function ProductPicker({ isOpen, onClose, onSelect }) {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  const [selected, setSelected] = useState({}); // Map of productId -> { product, variants: Set(variantIds) }
+  const [selected, setSelected] = useState({});
 
-  // Search Debounce
   useEffect(() => {
     const handler = setTimeout(() => {
       setPage(1);
@@ -59,17 +57,11 @@ export default function ProductPicker({ isOpen, onClose, onSelect }) {
     setSelected((prev) => {
       const newState = { ...prev };
       if (newState[product.id]) {
-        // Deselect
         delete newState[product.id];
       } else {
-        // Select all variants by default? Or just product?
-        // "User can select multiple products and variants"
-        // If selecting product, usually selects all variants or just the main item.
-        // Requirement doesn't specify default. I'll select all variants by default for UX convenience.
         newState[product.id] = {
           ...product,
-          variants: product.variants, // store full variant objects or logic?
-          // We need full objects for Replace.
+          variants: product.variants,
         };
       }
       return newState;
@@ -80,7 +72,6 @@ export default function ProductPicker({ isOpen, onClose, onSelect }) {
     setSelected((prev) => {
       const newState = { ...prev };
       if (!newState[product.id]) {
-        // If product not selected, select it with just this variant
         newState[product.id] = { ...product, variants: [variant] };
       } else {
         const currentVariants = newState[product.id].variants;

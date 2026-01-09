@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { GripVertical, X, ChevronDown, ChevronUp, Edit2 } from "lucide-react";
+import { GripVertical } from "lucide-react";
 import {
   SortableContext,
   verticalListSortingStrategy,
@@ -104,11 +104,6 @@ const ProductItem = ({ product, index, dispatch, totalItems }) => {
         </div>
 
         <div className={styles.discountSection}>
-          {/* Discount Logic: 
-              1. Show button if no discount active/value. 
-              2. Button click -> show inputs, hide button.
-              3. Supports empty products (placeholder).
-          */}
           {!(isDiscountActive || product.discount?.value > 0) && (
             <button
               className={styles.btnAddDiscount}

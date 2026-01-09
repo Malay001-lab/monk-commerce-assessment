@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   DndContext,
   closestCenter,
@@ -35,7 +35,6 @@ export default function ProductList({ items, dispatch }) {
   const handleDragEnd = (event) => {
     const { active, over } = event;
 
-    // Reset active ID
     setActiveId(null);
 
     if (!over) return;
@@ -60,11 +59,9 @@ export default function ProductList({ items, dispatch }) {
             activeData.parentListId === overData.parentListId
           ) {
             const productIndex = items.findIndex(
-              (p) => `p-${p.index}` === activeData.parentListId // fallback
+              (p) => `p-${p.index}` === activeData.parentListId
             );
 
-            // safer lookup using product id if available, or finding parent by traversing?
-            // Since we stored parentListId 'p-{index}', we can parse it.
             const pIdx = parseInt(activeData.parentListId.split("-")[1]);
 
             dispatch({
@@ -111,7 +108,6 @@ export default function ProductList({ items, dispatch }) {
           ))}
         </SortableContext>
       </div>
-      {/* DragOverlay is optional for better visual feedback, skipping for MVP simplicity unless needed */}
     </DndContext>
   );
 }

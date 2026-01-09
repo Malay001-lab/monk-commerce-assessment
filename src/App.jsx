@@ -8,7 +8,6 @@ import {
 import ProductList from "./components/ProductList/ProductList";
 import ProductPicker from "./components/ProductPicker/ProductPicker";
 import AddProductButton from "./components/AddProductButton/AddProductButton";
-// import logo from "./assets/logo.png"; // Unused and missing file
 
 function App() {
   const [state, dispatch] = useReducer(productsReducer, INITIAL_STATE);
