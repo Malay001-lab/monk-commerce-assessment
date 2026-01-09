@@ -29,7 +29,7 @@ lerna-debug.log*
 .DS_Store
 Thumbs.db
 
-# misc
+# miscs
 *.suo
 *.ntvs*
 *.njsproj
