@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { X, Search } from "lucide-react";
 import styles from "./ProductPicker.module.css";
 import { productsApi } from "../../services/apiClient";
@@ -12,15 +12,31 @@ export default function ProductPicker({ isOpen, onClose, onSelect }) {
   const [hasMore, setHasMore] = useState(true);
   const [selected, setSelected] = useState({});
 
+  const isMounted = useRef(false);
+
   useEffect(() => {
-    const handler = setTimeout(() => {
+    if (!isMounted.current) {
       setPage(1);
       setProducts([]);
       setHasMore(true);
       fetchProducts(query, 1);
-    }, 500);
-    return () => clearTimeout(handler);
+      isMounted.current = true;
+    } else {
+      const handler = setTimeout(() => {
+        setPage(1);
+        setProducts([]);
+        setHasMore(true);
+        fetchProducts(query, 1);
+      }, 500);
+      return () => clearTimeout(handler);
+    }
   }, [query]);
+
+  useEffect(() => {
+    if (isOpen) {
+      setSelected({});
+    }
+  }, [isOpen]);
 
   const [error, setError] = useState(null);
 
