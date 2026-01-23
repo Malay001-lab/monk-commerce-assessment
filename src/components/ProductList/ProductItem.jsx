@@ -48,11 +48,11 @@ const ProductItem = ({ product, index, dispatch, totalItems }) => {
     });
   };
   const productImage =
-    product.image?.src ||
-    product.images?.[0]?.src ||
+    product.image?.src ??
+    product.images?.[0]?.src ??
     product.variants?.find((v) => v.image?.src)?.image?.src;
 
-  const hasVariants = product.variants && product.variants.length > 1;
+  const hasVariants = (product.variants?.length ?? 0) > 1;
 
   return (
     <div ref={setNodeRef} style={style} className={styles.productRowWrapper}>
@@ -119,7 +119,7 @@ const ProductItem = ({ product, index, dispatch, totalItems }) => {
                 className={styles.discountVal}
                 type="number"
                 value={
-                  product.discount?.value === 0 ? "" : product.discount?.value
+                  (product.discount?.value ?? 0) === 0 ? "" : product.discount?.value
                 }
                 placeholder="0"
                 onChange={(e) => {
@@ -132,7 +132,7 @@ const ProductItem = ({ product, index, dispatch, totalItems }) => {
               />
               <select
                 className={styles.discountType}
-                value={product.discount?.type || "flat"}
+                value={product.discount?.type ?? "flat"}
                 onChange={(e) => handleDiscountChange("type", e.target.value)}
               >
                 <option value="flat">Flat</option>
@@ -152,10 +152,10 @@ const ProductItem = ({ product, index, dispatch, totalItems }) => {
       {showVariants && hasVariants && (
         <div className={styles.variantsList}>
           <SortableContext
-            items={product.variants.map((v) => `var-${v.id}`)}
+            items={product.variants?.map((v) => `var-${v.id}`) ?? []}
             strategy={verticalListSortingStrategy}
           >
-            {product.variants.map((variant, vIndex) => (
+            {product.variants?.map((variant, vIndex) => (
               <VariantItem
                 key={variant.id}
                 variant={variant}

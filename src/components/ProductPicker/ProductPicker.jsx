@@ -77,7 +77,7 @@ export default function ProductPicker({ isOpen, onClose, onSelect }) {
       } else {
         newState[product.id] = {
           ...product,
-          variants: product.variants,
+          variants: product.variants ?? [],
         };
       }
       return newState;
@@ -90,8 +90,8 @@ export default function ProductPicker({ isOpen, onClose, onSelect }) {
       if (!newState[product.id]) {
         newState[product.id] = { ...product, variants: [variant] };
       } else {
-        const currentVariants = newState[product.id].variants;
-        const exists = currentVariants.find((v) => v.id === variant.id);
+        const currentVariants = newState[product.id]?.variants ?? [];
+        const exists = currentVariants?.find((v) => v.id === variant.id);
         if (exists) {
           const newVars = currentVariants.filter((v) => v.id !== variant.id);
           if (newVars.length === 0) {

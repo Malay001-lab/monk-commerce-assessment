@@ -96,7 +96,7 @@ export function productsReducer(state, action) {
       variants[variantIndex] = {
         ...variants[variantIndex],
         discount: {
-          ...(variants[variantIndex].discount || { value: 0, type: "flat" }),
+          ...(variants[variantIndex]?.discount ?? { value: 0, type: "flat" }),
           [field]: value,
         },
       };
@@ -136,7 +136,7 @@ export function productsReducer(state, action) {
         ...p,
         id: `p-${p.id}-${Date.now()}-${Math.random()}`,
         discount: { value: 0, type: "flat" },
-        variants: p.variants || [],
+        variants: p.variants ?? [],
       }));
 
       const newItems = [...state.items];

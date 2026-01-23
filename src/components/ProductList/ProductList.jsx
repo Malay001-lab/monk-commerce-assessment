@@ -50,8 +50,8 @@ export default function ProductList({ items, dispatch }) {
           payload: { activeIndex: oldIndex, overIndex: newIndex },
         });
       } else {
-        const activeData = active.data.current;
-        const overData = over.data.current;
+        const activeData = active.data?.current;
+        const overData = over.data?.current;
 
         if (activeData?.type === "VARIANT" && overData?.type === "VARIANT") {
           if (
